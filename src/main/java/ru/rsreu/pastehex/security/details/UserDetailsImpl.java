@@ -3,7 +3,7 @@ package ru.rsreu.pastehex.security.details;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.rsreu.pastehex.models.User;
+import ru.rsreu.pastehex.models.user.User;
 import ru.rsreu.pastehex.repositories.StateRepository;
 
 import java.util.Collection;

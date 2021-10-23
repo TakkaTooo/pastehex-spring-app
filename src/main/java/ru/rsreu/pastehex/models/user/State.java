@@ -1,4 +1,4 @@
-package ru.rsreu.pastehex.models;
+package ru.rsreu.pastehex.models.user;
 
 import lombok.*;
 
@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -22,7 +21,6 @@ public class State {
     private String title;
 
     @OneToMany(mappedBy = "state")
-    @ToString.Exclude
     private Set<User> user;
 
     @Override

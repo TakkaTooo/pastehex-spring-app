@@ -1,4 +1,4 @@
-package ru.rsreu.pastehex.models;
+package ru.rsreu.pastehex.models.user;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,11 +18,10 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     String title;
 
     @OneToMany(mappedBy = "role")
-    @ToString.Exclude
     private Set<User> users;
 
     @Override

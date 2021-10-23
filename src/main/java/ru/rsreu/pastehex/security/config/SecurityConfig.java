@@ -1,6 +1,7 @@
 package ru.rsreu.pastehex.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
+
+    @Value("${security.remember-me.key}")
+    private String rememberMeKey;
 
     @Autowired
     public SecurityConfig(UserDetailsService userDetailsService) {
@@ -40,11 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                     .loginPage("/signin")
                     .usernameParameter("login")
-                    .defaultSuccessUrl("/")
+                    .defaultSuccessUrl("/").permitAll()
                 .and()
                     .logout()
-                    .logoutSuccessUrl("/signin")
+                    .logoutSuccessUrl("/")
+                    .deleteCookies("JSESSIONID")
                     .permitAll()
+                .and().rememberMe()
+                    .rememberMeParameter("remember-me")
+                    .key(rememberMeKey)
                 .and()
                     .csrf().disable();
     }

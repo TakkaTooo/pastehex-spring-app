@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.rsreu.pastehex.forms.UserForm;
-import ru.rsreu.pastehex.models.Role;
-import ru.rsreu.pastehex.models.State;
-import ru.rsreu.pastehex.models.User;
+import ru.rsreu.pastehex.models.user.Role;
+import ru.rsreu.pastehex.models.user.State;
+import ru.rsreu.pastehex.models.user.User;
 import ru.rsreu.pastehex.repositories.UserRepository;
 
 @Service
