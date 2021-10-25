@@ -1,3 +1,5 @@
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css');
+
 body {
     color: #999;
     background: #f3f3f3;
@@ -31,7 +33,7 @@ body {
     border-radius: 3px;
     margin-bottom: 15px;
     background: #fff;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
 .signup-form .form-group row {
@@ -84,9 +86,8 @@ body {
     border-radius: 50%;
     width: 36px;
     height: 36px;
-    margin: -8px 0;
     float: left;
-    margin-right: 10px;
+    margin: -8px 10px -8px 0;
 }
 .navbar .navbar-brand {
     padding-left: 0;
@@ -202,12 +203,12 @@ body {
     position: relative;
     top: 2px;
 }
-.or-seperator {
+.or-separator {
     margin-top: 32px;
     text-align: center;
     border-top: 1px solid #e0e0e0;
 }
-.or-seperator b {
+.or-separator b {
     color: #666;
     padding: 0 8px;
     width: 30px;
@@ -230,6 +231,10 @@ body {
     position: relative;
     top: 1px;
 }
+
+.avatar-left {
+    margin: 0 3em 0 auto;
+}
 @media (min-width: 1200px){
     .form-inline .input-group {
         width: 300px;
@@ -249,4 +254,21 @@ body {
     .navbar .input-group {
         width: 100%;
     }
+}
+
+table,
+thead,
+tr,
+tbody,
+th,
+td {
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+}
+
+.select-width {
+    width: 150px;
 }

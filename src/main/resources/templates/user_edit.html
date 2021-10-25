@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pastehex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../css/styles.css">
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header(authenticated=true)">...</div>
+    <div style="margin-top: 50px" class = "container">
+      <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+          <h1 style="margin-top: 10px" class = "text-center text-dark"> Edit user </h1>
+          <h4 class = "text-center text-dark">id: <span th:text="${user.id}"></span></h4>
+          <h4 class = "text-center text-dark" th:text="${user.login}"></h4>
+          <h4 class = "text-center text-dark" th:text="${user.email}"></h4>
+          <div class = "card-body">
+            <form id="update" th:action="@{|/admin/users/edit/${user.id}|}" method="post">
+              <div class ="form-group">
+                <div class="mx-auto">
+                  <label class="col-form-label col-4">Role
+                    <select form="update" id="roleTitle" name="roleTitle" class="form-select-lg select-width mx-auto" aria-label=".form-select-lg example">
+                      <th: block th:each="role: ${roles}">
+                        <option th:text="${role.title}" th:selected="${role.title == user.role.title}"></option>
+                      </th:>
+                    </select>
+                  </label>
+                </div>
+                <div class="mx-auto">
+                  <label class="col-form-label col-4 mx-auto">State
+                    <select form="update" id="stateTitle" name="stateTitle" class="form-select select-width">
+                      <th: block th:each="state: ${states}">
+                        <option th:text="${state.title}" th:selected="${state.title == user.state.title}"></option>
+                      </th:>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class = "box-footer">
+                <button type="submit" class = "btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

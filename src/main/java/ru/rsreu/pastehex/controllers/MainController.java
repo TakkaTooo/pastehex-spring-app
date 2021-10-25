@@ -10,6 +10,9 @@ public class MainController {
     @GetMapping("/")
     public String getMainPage(Model model, Authentication authentication) {
         model.addAttribute("authenticated", authentication != null);
+        if (authentication != null) {
+            model.addAttribute("name", authentication.getName());
+        }
         return "main";
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.rsreu.pastehex.forms.UserForm;
+import ru.rsreu.pastehex.forms.UserSignUpForm;
 import ru.rsreu.pastehex.services.signup.UserSignUpService;
 
 @Controller
@@ -26,8 +26,8 @@ public class SignUpController {
     }
 
     @PostMapping("/signup")
-    public String signUp(UserForm userForm) {
-        userSignUpService.signUp(userForm);
+    public String signUp(UserSignUpForm userSignUpForm) {
+        userSignUpService.signUp(userSignUpForm);
         return "redirect:/signin";
     }
 }

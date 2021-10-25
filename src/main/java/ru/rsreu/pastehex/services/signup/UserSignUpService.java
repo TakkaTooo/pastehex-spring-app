@@ -1,7 +1,7 @@
 package ru.rsreu.pastehex.services.signup;
 
-import ru.rsreu.pastehex.forms.UserForm;
+import ru.rsreu.pastehex.forms.UserSignUpForm;
 
 public interface UserSignUpService {
-    void signUp(UserForm userForm);
+    void signUp(UserSignUpForm userSignUpForm);
 }
