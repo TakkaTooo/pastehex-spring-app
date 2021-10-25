@@ -1,4 +1,4 @@
-package ru.rsreu.pastehex.models.settings;
+package ru.rsreu.pastehex.models.paste.settings;
 
 import lombok.*;
 
@@ -11,8 +11,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "programming_languages")
-public class ProgrammingLanguage {
+@Table(name = "expirations")
+public class Expiration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +20,9 @@ public class ProgrammingLanguage {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "programmingLanguage")
+    @Column(name = "removal_time")
+    private Long secondsRemovalTime;
+
+    @OneToMany(mappedBy = "expiration")
     private Set<PasteSettings> pasteSettingsSet;
 }

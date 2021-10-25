@@ -1,4 +1,4 @@
-package ru.rsreu.pastehex.models.settings;
+package ru.rsreu.pastehex.models.paste.settings;
 
 import lombok.*;
 import ru.rsreu.pastehex.models.paste.Paste;

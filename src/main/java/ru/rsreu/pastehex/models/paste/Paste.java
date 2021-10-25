@@ -2,7 +2,7 @@ package ru.rsreu.pastehex.models.paste;
 
 
 import lombok.*;
-import ru.rsreu.pastehex.models.settings.PasteSettings;
+import ru.rsreu.pastehex.models.paste.settings.PasteSettings;
 import ru.rsreu.pastehex.models.view.View;
 
 import javax.persistence.*;
