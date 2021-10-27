@@ -7,12 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.rsreu.pastehex.forms.UserUpdateForm;
 import ru.rsreu.pastehex.services.admin.AdminPanelService;
 import ru.rsreu.pastehex.services.role.RoleService;
 import ru.rsreu.pastehex.services.state.StateService;
 import ru.rsreu.pastehex.services.user.UserService;
-
 
 @Controller
 public class AdminPanelController {
@@ -42,9 +42,15 @@ public class AdminPanelController {
     }
 
     @GetMapping("/admin/users")
-    public String getUsersPage(Model model, Authentication authentication) {
+    public String getUsersPage(@RequestParam(required = false) Integer page,
+                               Model model, Authentication authentication) {
+        if (page == null) {
+            page = 1;
+        }
         model.addAttribute("name", authentication.getName());
-        model.addAttribute("users", userService.findAllOrderByIdAsc());
+        model.addAttribute("users", userService.findAllByPageNumber(page - 1,
+                adminPanelService.getUsersPageSize()));
+        model.addAttribute("pagesNumbers", adminPanelService.getViewablePagesNumbers(page));
         return "admin_users";
     }
 

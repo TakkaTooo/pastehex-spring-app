@@ -14,7 +14,6 @@
     </head>
     <body>
         <div th:replace="fragments/header :: header(authenticated=true)">...</div>
-
         <table class="table table-hover">
             <thead class="thead-dark">
                 <th scope="col">Id</th>
@@ -25,20 +24,23 @@
                 <th scope="col">Action</th>
             </thead>
             <th: block th:each="user : ${users}">
-                <tr>
+                <tr style="word-break: break-all;">
                     <th class="bg-white align-middle" scope="row" th:text="${user.id}"></th>
                     <td class="bg-white align-middle" th:text="${user.login}"></td>
                     <td class="bg-white align-middle" th:text="${user.email}"></td>
                     <td class="bg-white align-middle" th:text="${user.role.title}"></td>
                     <td class="bg-white align-middle" th:text="${user.state.title}"></td>
                     <td class="bg-white">
-                        <span th:if="${user.role.title != 'ADMIN'}">
-                            <a th:href="@{|/admin/users/${user.id}|}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
-                            <a th:href="@{|/${user.login}|}" class="btn btn-secondary active" role="button" aria-pressed="true">Pastes</a>
-                        </span>
+                        <div th:if="${user.role.title != 'ADMIN'}">
+                            <a th:href="@{|/admin/users/${user.id}|}" class="btn" style="text-align: center; background: #4ec7ef; color: #FFF;" role="button" aria-pressed="true">Edit</a>
+                            <a th:href="@{|/${user.login}|}" class="btn" role="button" style="text-align: center; background: #33cabb; color: #FFF;" aria-pressed="true">Pastes</a>
+                        </div>
                     </td>
                 </tr>
             </th:>
         </table>
+        <th: block th:each="number : ${pagesNumbers}">
+            <a th:href="@{|/admin/users?page=${number}|}" style="margin-left: 10px"><span th:text="${number}"></a>
+        </th:>
     </body>
 </html>

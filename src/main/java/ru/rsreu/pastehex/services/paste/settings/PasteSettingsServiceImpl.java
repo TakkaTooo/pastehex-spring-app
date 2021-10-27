@@ -33,9 +33,9 @@ public class PasteSettingsServiceImpl implements PasteSettingsService {
 
     @Override
     public PasteSettings saveDefaultPasteSettings() {
-        ProgrammingLanguage defaultProgrammingLanguage = this.programmingLanguageRepository.getById(1L);
-        Exposure defaultExposure = this.exposureRepository.getById(1L);
-        Expiration defaultExpiration = this.expirationRepository.getById(1L);
+        ProgrammingLanguage defaultProgrammingLanguage = programmingLanguageRepository.getById(1L);
+        Exposure defaultExposure = exposureRepository.getById(1L);
+        Expiration defaultExpiration = expirationRepository.getById(1L);
         PasteSettings defaultPasteSettings = PasteSettings.builder()
                 .programmingLanguage(defaultProgrammingLanguage)
                 .exposure(defaultExposure)

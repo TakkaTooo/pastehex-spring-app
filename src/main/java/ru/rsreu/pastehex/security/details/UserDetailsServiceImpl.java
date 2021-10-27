@@ -10,7 +10,6 @@ import ru.rsreu.pastehex.repositories.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
     private final UserRepository userRepository;
     private final StateRepository stateRepository;
 
@@ -23,6 +22,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return new UserDetailsImpl(this.stateRepository,
-                this.userRepository.findUserByLogin(username).orElseThrow(IllegalArgumentException::new));
+                userRepository.findByLogin(username).orElseThrow(IllegalArgumentException::new));
     }
 }

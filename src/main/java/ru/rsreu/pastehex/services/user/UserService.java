@@ -16,4 +16,6 @@ public interface UserService {
     void save(User user);
 
     void updateRoleAndStateById(Long id, Role role, State state);
+
+    List<User> findAllByPageNumber(int pageNumber, int pageSize);
 }
