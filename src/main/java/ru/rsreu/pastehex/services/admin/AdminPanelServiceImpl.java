@@ -18,7 +18,7 @@ public class AdminPanelServiceImpl implements AdminPanelService {
     private int usersPageSize;
 
     @Value("${admin.users.pages.viewable.quantity}")
-    private int usersPagesViewableQuantity ;
+    private int usersPagesViewableQuantity;
 
     private final UserService userService;
 
@@ -54,9 +54,8 @@ public class AdminPanelServiceImpl implements AdminPanelService {
 
     @Override
     public List<Integer> getViewablePagesNumbers(int currentPageNumber) {
-        ViewablePageNumbersGenerator viewablePageNumbersGenerator =
-                new ViewablePageNumbersGenerator(buildAdminUsersPagesSettings());
-        return viewablePageNumbersGenerator.getViewablePagesNumbers(currentPageNumber);
+        return new ViewablePageNumbersGenerator(buildAdminUsersPagesSettings())
+                .getViewablePagesNumbers(currentPageNumber);
     }
 
     @Override

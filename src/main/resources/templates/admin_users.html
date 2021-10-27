@@ -39,8 +39,22 @@
                 </tr>
             </th:>
         </table>
-        <th: block th:each="number : ${pagesNumbers}">
-            <a th:href="@{|/admin/users?page=${number}|}" style="margin-left: 10px"><span th:text="${number}"></a>
-        </th:>
+        <nav aria-label="...">
+            <ul class="pagination pagination-sm">
+                <th: block th:each="number : ${pagesNumbers}">
+                    <span th:if="${(#request.getParameter('page') != null and #request.getParameter('page') == number.toString()) or (#request.getParameter('page') == null and number == 1)}">
+                      <li class="page-item disabled">
+                          <a class="page-link" th:href="@{|/admin/users?page=${number}|}"><span th:text="${number}"></a>
+                      </li>
+                    </span>
+                    <span th:unless="${(#request.getParameter('page') != null and #request.getParameter('page') == number.toString()) or (#request.getParameter('page') == null and number == 1)}">
+                      <li class="page-item">
+                        <a class="page-link" th:href="@{|/admin/users?page=${number}|}"><span th:text="${number}"></a>
+                      </li>
+                    </span>
+                </th:>
+            </ul>
+        </nav>
+
     </body>
 </html>
